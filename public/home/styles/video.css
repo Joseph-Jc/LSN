@@ -1,0 +1,146 @@
+.video_box{
+	width: 80%;
+	height: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.video_list{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.video_list li{
+	float: left;
+	width: 255px;
+	height: 100px;
+	background: #272a30;
+	margin:0px 20px 20px 0px;
+	border-radius: 5px;
+}
+
+
+.video_img{
+	-webkit-transform:scale(0.9);
+	-moz-transform:scale(0.9);
+	-o-transform:scale(0.9);
+	-webkit-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	width: 130px;
+	height: 80px;
+	margin: 10px 10px 10px 10px;
+	float: left;
+}
+
+.active_img{
+	border: 2px solid #5aa700;
+}
+
+.active_text{
+	color: #5aa700 !important;
+}
+
+.video_img img{
+	width: 130px;
+	height: 80px;
+
+}
+
+.video_img:hover{
+	-webkit-transform:scale(1.0);
+
+	-moz-transform:scale(1.0);
+
+	-o-transform:scale(1.0);
+
+}
+
+.video_img .mask{
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+	position: absolute;
+	height: 100%;
+	opacity:0.6;
+	cursor:pointer;
+	-webkit-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-o-transition-duration:0.5s;
+}
+
+.video_img #mask-1 {
+	width:50%;
+}
+
+.video_img #mask-2{
+	width:50%;
+	margin-left:65px;
+}
+
+.video_img:hover #mask-1{
+	width:0%;
+}
+
+.video_img:hover #mask-2{
+	margin-left:130px;
+	width:0%;
+}
+
+.video_img a{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 45px;
+}
+
+.video_img i{
+	font-size: 35px;
+	color: #2c8946;
+}
+
+.video_img i:hover{
+	color: #4ef27c;
+}
+
+.video_title{
+	width: 100px;
+	height: 40px;
+	line-height: 20px;
+	float: left;
+	color: #bababa;
+	font-size: 13px;
+	margin-top: 20px;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+	overflow:hidden;
+}
+
+.video_list h2{
+	margin-top: 5px;
+	float: left;
+	color: #787878;
+	font-size: 12px;
+}
+
+.video_list a:hover{
+	color: #fff;
+}
+
+.content{
+	background: #fff;
+	border-top: 3px solid #5fb878;
+	padding-bottom: 10px;
+}
+
+.content_b{
+	width: 82%;
+	margin:0 auto;
+}
+
+.content_title{
+	width: 95%;
+	height: 40px;
+	margin: 0 auto;
+	border-bottom: 1px solid #aaa;
+	line-height: 40px;
+}

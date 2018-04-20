@@ -1,0 +1,82 @@
+.content_l{
+	width: 760px;
+	min-height: 400px;
+	margin-right: 20px;
+	float: left;
+	margin-bottom: 20px;
+	border-top: 3px solid #5fb878;
+}
+
+.content_r{
+	width: 280px;
+	min-height: 400px;
+	float: right;
+	background: #fff;
+	margin-bottom: 20px;
+}
+
+.message_board{
+	width: 100%;
+	min-height: 200px;
+	background: #fff;
+	padding: 20px;
+}
+
+.message_list{
+	width: 100%;
+	min-height: 400px;
+	background: #fff;
+	margin-bottom: 5px;
+	padding: 20px;
+}
+
+.message_list li{
+	width: 100%;
+	min-height: 80px;
+	margin-bottom: 10px;
+}
+
+.message_list h1{
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 20px;
+	background: #cfcfcf;
+	font-size: 15px;
+	font-weight: bold;
+	color: #555;
+}
+
+.message_list li span{
+	margin-right: 10px;
+	font-size: 13px;
+}
+
+.message_list p{
+	font-size: 16px;
+	color: #333;
+	line-height: 40px;
+	margin-left: 25px;
+}
+
+#layui_page{
+	width: 82%;
+	margin: 20px auto;
+}
+
+.layui-input-block input{
+	width: 300px;
+}
+
+.layui-form-label{
+	font-size: 14px;
+
+}
+
+.layui-input-block{
+	width: 500px;
+}
+
+.leave_content{
+	width: 80%;
+	margin:10px 0px 0px 20px;
+}

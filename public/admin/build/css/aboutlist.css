@@ -1,0 +1,12 @@
+.operate{
+    height: 50px;
+    margin-left: 20px;
+}
+
+.operate .layui-btn{
+    margin: 6px 0px;
+}
+
+.layui-table-view{
+    margin: 0px 0px 0px 20px;
+}

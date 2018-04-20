@@ -1,0 +1,54 @@
+.layui-btn-xs {
+height: 25px;
+line-height: 25px;
+padding: 0 10px;
+font-size: 12px;
+}
+
+.layui-table-view{
+    margin: 0px 0px 0px 20px;
+    float: left;
+}
+
+.layui-elem-field{
+    float: left;
+    margin: -10px 0px 0px 30px;
+    width: 320px;
+    height: 510px;
+}
+
+.layui-upload-drag{
+    margin:20px 30px;
+}
+
+.layui-input-block{
+    margin: 10px auto;
+    width: 250px;
+}
+
+.layui-elem-field .layui-btn{
+    padding:0px 50px;
+    margin: 10px 80px;
+}
+
+.layui-input{
+    margin:10px auto;
+}
+
+#img_name{
+    width: 250px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    color: #555;
+}
+
+.operate{
+    height: 50px;
+    margin-left: 20px;
+}
+
+.operate .layui-btn{
+    margin: 6px 0px;
+}
