@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ImgcarController extends Controller
 {
+    //分配页面
     public function imgcarlist(){
         return view('admin.imgcarlist');
     }
 
+    //异步上传图片
     public function upload_imgcar(Request $request){
         $file=$request->file('file');
         $clientName = $file -> getClientOriginalName(); //获取文件名称
@@ -30,6 +32,7 @@ class ImgcarController extends Controller
         ]);
     }
 
+    //处理上传表单数据
     public function uploadimg(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -44,6 +47,7 @@ class ImgcarController extends Controller
         }
     }
 
+    //列表
     public function img_list(Request $request){
         $res=$request->input();
         $data=Imgcar::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->orderBy('img_id', 'desc')->get();
@@ -56,6 +60,7 @@ class ImgcarController extends Controller
         ]);
     }
 
+    //删除
     public function img_del(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -76,6 +81,7 @@ class ImgcarController extends Controller
         }
     }
 
+    //修改链接
     public function img_edit(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();

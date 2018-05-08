@@ -87,7 +87,6 @@
 	width: 76%;
 	min-height: 40px;
 	margin: 5px auto;
-	line-height: 40px;
 	padding: 5px 30px;
 }
 
@@ -95,7 +94,7 @@
 	width: 150px;
 	height: 180px;
 	margin: 0 auto;
-	background: url('../images/ebook_thum.jpg');
+	background: url('../images/ebook_thum.png');
 }
 
 .active{

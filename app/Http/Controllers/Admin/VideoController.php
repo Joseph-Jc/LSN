@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
+    //分配页面
     public function videolist(){
         return view('admin.videolist');
     }
 
+    //列表
     public function video_list(Request $request){
         $res=$request->input();
         $video=Video::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->orderBy('video_id', 'desc')->get();
@@ -26,6 +28,7 @@ class VideoController extends Controller
         ]);
     }
 
+    //删除
     public function video_del(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -47,6 +50,7 @@ class VideoController extends Controller
         }
     }
 
+    //修改标题
     public function video_edit(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -66,6 +70,7 @@ class VideoController extends Controller
         }
     }
 
+    //上传视频
     public function upload_video(Request $request){
         $file=$request->file('file');
         $clientName = $file -> getClientOriginalName(); //获取文件名称
@@ -86,6 +91,7 @@ class VideoController extends Controller
         ]);
     }
 
+    //上传表单
     public function upload(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();

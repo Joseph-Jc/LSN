@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class EbookController extends Controller
 {
+    //分配页面
     public function ebooklist(){
         return view('admin.ebooklist');
     }
 
+    //列表
     public function ebook_list(Request $request){
         $res=$request->input();
         $data=Ebook::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->orderBy('ebook_id', 'desc')->get();
@@ -27,6 +29,7 @@ class EbookController extends Controller
         ]);
     }
 
+    //前端异步上传过来的书籍，进行处理
     public function upload_ebook(Request $request){
         $file=$request->file('file');
         $clientName = $file -> getClientOriginalName(); //获取文件名称
@@ -42,6 +45,7 @@ class EbookController extends Controller
         ]);
     }
 
+    //同上，处理书籍封面
     public function upload_thum(Request $request){
         $file=$request->file('file');
         $clientName = $file -> getClientOriginalName(); //获取文件名称
@@ -57,6 +61,7 @@ class EbookController extends Controller
         ]);
     }
 
+    //填好表单后的点击上传过来的数据
     public function uploadebook(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -74,6 +79,7 @@ class EbookController extends Controller
         }
     }
 
+    //删除
     public function ebook_del(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -97,6 +103,7 @@ class EbookController extends Controller
         }
     }
 
+    //修改
     public function ebook_edit(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -116,11 +123,13 @@ class EbookController extends Controller
         }
     }
 
+    //查看
     public function pdf($ebook_id){
         $path=Ebook::where('ebook_id',$ebook_id)->pluck('ebook_path')->first();
         return view('admin.pdf',compact('path'));
     }
 
+    //批量删除
     public function del_many_ebook(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -148,6 +157,7 @@ class EbookController extends Controller
         }
     }
 
+    //全部删除
     public function del_all_ebook(Request $request){
         if($request->isMethod('post')){
             $result=Ebook::truncate();

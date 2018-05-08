@@ -1,6 +1,3 @@
-# Laravel版本:5.2
-# PHP版本:5.6以上
-# 请将lsn.sql添加到mysql数据库
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

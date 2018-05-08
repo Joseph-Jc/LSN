@@ -62,6 +62,7 @@ class IndexController extends Controller
         }
     }
 
+    //富文本编辑器里的上传图片
     public function upload_img(Request $request){
         $file=$request->file('img');
         $clientName = $file -> getClientOriginalName(); //获取文件名称

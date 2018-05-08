@@ -84,13 +84,16 @@
 
         form.on('submit(formDemo)', function(data){
             var data=data.field
-            if(data.exam_summary==""){
-                data.exam_summary=editor1.txt.text().substr(0,250)+"...";
+            var exam_answer
+            if(editor2.txt.text()==""){
+                exam_answer="";
+            }else{
+                exam_answer=editor2.txt.html();
             }
             $.ajax({
                 url: "{{url('admin/examedit')}}",
                 type: "post",
-                data:{'data':data,'exam_content':editor1.txt.html(),'exam_answer':editor2.txt.html(),'_token':"{{csrf_token()}}"},
+                data:{'data':data,'exam_content':editor1.txt.html(),'exam_answer':exam_answer,'_token':"{{csrf_token()}}"},
                 dataType: "json",
                 success:function(data){
                     if(data.status==1){

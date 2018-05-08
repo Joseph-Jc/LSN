@@ -10,6 +10,7 @@ use App\Http\Model\Admin\Footnav;
 
 class FootnavController extends Controller
 {
+    //分配页面，同时处理添加导航
     public function footnav(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -22,6 +23,7 @@ class FootnavController extends Controller
         return view('admin.footnav');
     }
 
+    //列表
     public function footnav_list(Request $request){
         $res=$request->input();
         $footnav=Footnav::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->orderBy('footnav_id', 'desc')->get();

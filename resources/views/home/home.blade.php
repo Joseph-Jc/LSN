@@ -25,13 +25,13 @@
 				<i class="layui-icon" style="font-size: 15px; color: #5fb878;">&#xe617;</i>
 				<h1>课程简介 <span>LESSON INTRO<span></h1>
 				<div class="more">
-					<a href=""><i class="layui-icon" style="font-size: 30px; line-height: 40px;">&#xe65f;</i></a>
+					<a href="http://localhost/lsn/about/4/4"><i class="layui-icon" style="font-size: 30px; line-height: 40px;">&#xe65f;</i></a>
 				</div>
 			</div>
 			<div>
-				<img class="intro_img" src="{{asset('public/home/images/lessonbook.png')}}" alt="">
+				<img class="intro_img" src="http://localhost/lsn/uploads/images/20180502002259175.PNG" alt="">
 				<div class="intro_content">
-					C 语言是国内外应用最为广泛的一种计算机语言。C语言功能丰富，表达力强，使用方便灵活，生成的目标程序质量高，应用面广，可移植性好，既具有高级语言的特 点，又具有低级语言的绝大部分功能；几乎任何一种机型（大型机、小型机）、任何一种操作系统（Windows、Linux、Unix）都支持 C 语言开发。C 语言在巩固其原有应用领域的同时，又在拓展新的应用领域，支持大型数据库开发和 Internet 应用。在国内外的计算机及其相关专业的本科和专科中也都普遍安排了C语言程序设计的课程。本课程是计算机及其...
+					{{$lesson_intro->about_summary}}
 				</div>
 			</div>
 		</div>
@@ -56,15 +56,15 @@
 				<i class="layui-icon" style="font-size: 15px; color: #5fb878;">&#xe617;</i>
 				<h1>课程负责人 <span>PRINCIPAL</span></h1>
 				<div class="more">
-					<a href=""><i class="layui-icon" style="font-size: 30px; line-height: 40px;">&#xe65f;</i></a>
+					<a href="http://localhost/lsn/about/1/1"><i class="layui-icon" style="font-size: 30px; line-height: 40px;">&#xe65f;</i></a>
 				</div>
 			</div>
 			<div class="principal_content" style="width:350px;height:400px">
 				<div style="float:left; clear: both;" align="center">
-					<img src="{{asset('public/home/images/lessonperson.png')}}" width="150" height="200" alt="">
+					<img src="http://localhost/lsn/uploads/images/20180502002809293.png" width="150" height="200" alt="">
 				</div>
-				<p style="padding:10px;height:340px;font-size:15px;">
-					戴经国，男，1962年出生，硕士，教授，硕士生导师。 现任韶关学院信息科学与工程学院、软件学院（广东省示范性软件学院）和ICT学院（韶关学院—中兴通讯ICT学院）院长，韶关市计算机学会理事长、广东省 计算机学会常务理事、广东省计算机类专业教学指导委员会委员。从教34年来，主讲《C语言程序设计》、《计算机网络》、《数据结构》、《C++程序设计》 等专业基础课和专业课。2012年获南粤优秀教师、韶关市专业技术拔尖人才，2014年获韶关学院教学名师、韶关学院优秀教学团...
+				<p style="padding:10px;height:340px;">
+					{{$prinpical->about_summary}}
 				</p>
 			</div>
 		</div>
@@ -109,7 +109,7 @@
 						<a href="{{url('video')}}/{{$value->video_id}}"><i class="layui-icon">&#xe652;</i></a>
 						<img src="{{url('')}}/{{$value->thum_path}}"></a>
 					</div>
-					<a href="{{url('video')}}/{{$value->video_id}}" title="{{$value->video_title}}"><h1 class="video_title">{{$value->video_title}}</h1>
+					<a href="{{url('video')}}/{{$value->video_id}}" title="{{$value->video_title}}"><h1 class="video_title">{{$value->video_title}}</h1></a>
 					<h2 class="video_time">{{$value->video_time}}</h2>
 				</li>
 				@endforeach

@@ -335,7 +335,8 @@
 }
 
 .intro_content{
-	font-size: 15px;
+	font-size: 14px;
+	line-height: 24px;
 	width: 350px;
 	height:240px;
 	margin:10px 20px 10px 0px;
@@ -345,6 +346,13 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
 	overflow: hidden;
+	color:#555;
+}
+
+.principal_content{
+	font-size: 14px;
+	line-height: 22px;
+	color: #555;
 }
 
 .principal_content img{
@@ -385,4 +393,8 @@
 .courseware ul li span{
 	font-size: 12px;
 	color: #888;
+}
+
+.new_list li a{
+	font-size: 15px;
 }

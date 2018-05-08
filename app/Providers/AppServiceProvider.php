@@ -7,6 +7,7 @@ use App\Http\Model\Admin\Video;
 use App\Http\Model\Admin\Ebook;
 use App\Http\Model\Admin\Exam;
 use App\Http\Model\Admin\About;
+use App\Http\Model\Admin\Aboutcate;
 use App\Http\Model\Admin\Footnav;
 use App\Http\Model\Admin\User;
 
@@ -23,9 +24,9 @@ class AppServiceProvider extends ServiceProvider
             $video=Video::orderBy('video_id','desc')->pluck('video_id')->first();
             $ebook=Ebook::orderBy('ebook_id','desc')->pluck('ebook_id')->first();
             $exam=Exam::orderBy('exam_id','desc')->pluck('exam_id')->first();
-            $about=About::orderBy('about_id','desc')->pluck('about_title','about_id');
+            $aboutcate=Aboutcate::orderBy('about_cate_id','desc')->pluck('about_cate_name','about_cate_id');
             $footnav=Footnav::orderBy('footnav_id','desc')->get();
-            $view->with('nav_id',array('video'=>$video,'ebook'=>$ebook,'exam'=>$exam,'about'=>$about));
+            $view->with('nav_id',array('video'=>$video,'ebook'=>$ebook,'exam'=>$exam,'aboutcate'=>$aboutcate));
             $view->with('footnav',$footnav);
         });
 

@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/plugins/layui/css/layui.css')}}">
     <link rel="stylesheet" href="{{asset('public/admin/build/css/leavelist.css')}}" media="all">
 </head>
+
 <body>
     <fieldset class="layui-elem-field">
         <legend>待审核的留言</legend>
@@ -23,6 +24,7 @@
             </div>
             <table id="leavelist_check" lay-filter="leavelist_check"></table>
             <script type="text/html" id="barleavelist_check">
+                <a class="layui-btn layui-btn-xs" lay-event="read">查看</a>
         		<a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
         		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         	</script>
@@ -43,6 +45,7 @@
             </div>
             <table id="leavelist" lay-filter="leavelist"></table>
             <script type="text/html" id="barleavelist">
+                <a class="layui-btn layui-btn-xs" lay-event="read">查看</a>
         		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         	</script>
         </div>
@@ -60,7 +63,7 @@
                 elem: '#leavelist_check'
                 ,even: true
                 ,height: 400
-                ,width: 900
+                ,width: 950
                 ,url: '{{url('admin/leavelist_check')}}' //数据接口
                 ,page: true
                 ,cols: [[ //表头
@@ -70,7 +73,7 @@
                     ,{field: 'leave_email', title: '邮箱', width:200, align: 'center'}
                     ,{field: 'leave_time', title: '留言日期', width:200, sort: true, align: 'center'}
                     ,{field: 'leave_content', title: '内容', width:250, align: 'center'}
-                    ,{fixed: 'right', title: '操作', width:150, align:'center', toolbar: '#barleavelist_check'}
+                    ,{fixed: 'right', title: '操作', width:200, align:'center', toolbar: '#barleavelist_check'}
                 ]]
             });
 
@@ -97,7 +100,43 @@
             table.on('tool(leavelist_check)', function(obj){
                 var data = obj.data;
                 var tr=obj.tr;
-                if(obj.event === 'check'){
+                if(obj.event === 'read'){
+                    layer.open({
+                        type: 0,
+                        shade: false,
+                        closeBtn: 2,
+                        anim: 1,
+                        title: data.leave_person+"&nbsp &nbsp &nbsp"+data.leave_time, //不显示标题
+                        content: data.leave_content,
+                        btn: ['通过审核'],
+                        yes: function(index, layero){
+                            layer.msg('确定要通过吗?', {
+                                btn: ['确定','取消'] //按钮
+                                ,yes:function(index){
+                                console.log(data);
+                                $.ajax({
+                                    url: "{{url('admin/leave_check')}}",
+                                    type: "POST",
+                                    data:{'leave_id':data.leave_id,'_token':"{{csrf_token()}}"},
+                                    dataType: "json",
+                                    success: function(data){
+                                        if(data.status==1){
+                                            tableIns1.reload();
+                                            tableIns2.reload();
+                                            //关闭弹框
+                                            layer.close(index);
+                                            layer.msg(data.msg, {icon: 6});
+                                        }else{
+                                            layer.msg(data.msg, {icon: 5});
+                                        }
+                                    }
+                                });
+                                }
+                            });
+                            //layer.close(index); //如果设定了yes回调，需进行手工关闭
+                        }
+                    });
+                }else if(obj.event === 'check'){
                     layer.msg('确定要通过吗?', {
                         btn: ['确定','取消'] //按钮
                         ,yes:function(index){
@@ -151,7 +190,41 @@
             table.on('tool(leavelist)', function(obj){
                 var data = obj.data;
                 var tr=obj.tr;
-                if(obj.event === 'del'){
+                if(obj.event === 'read'){
+                    layer.open({
+                        type: 0,
+                        shade: false,
+                        closeBtn: 2,
+                        anim: 1,
+                        title: data.leave_person+"&nbsp &nbsp &nbsp"+data.leave_time, //不显示标题
+                        content: data.leave_content,
+                        btn: ['删除'],
+                        yes: function(index, layero){
+                            layer.msg('真的删除吗?', {
+                                btn: ['确定','取消'] //按钮
+                                ,yes:function(index){
+                                console.log(data);
+                                $.ajax({
+                                    url: "{{url('admin/leave_del')}}",
+                                    type: "POST",
+                                    data:{'leave_id':data.leave_id,'_token':"{{csrf_token()}}"},
+                                    dataType: "json",
+                                    success: function(data){
+                                        if(data.status==1){
+                                            tableIns2.reload();
+                                            //关闭弹框
+                                            layer.close(index);
+                                            layer.msg(data.msg, {icon: 6});
+                                        }else{
+                                            layer.msg(data.msg, {icon: 5});
+                                        }
+                                    }
+                                });
+                                }
+                            });
+                        }
+                    });
+                }else if(obj.event === 'del'){
                     layer.msg('真的删除吗?', {
                         btn: ['确定','取消'] //按钮
                         ,yes:function(index){

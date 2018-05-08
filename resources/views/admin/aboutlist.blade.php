@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('public/admin/build/css/aboutlist.css')}}" media="all">
 </head>
 <body>
-    <input type="text" name="copy_link" value="" style="width:0px;height:0px;">
+    <input id="foo" type="text" name="copy_link" value="" style="width:2px;height:1px;">
     <div class="operate">
         <button class="layui-btn" onclick="window.location.href='{{url('admin/aboutedit')}}'">
             <i class="layui-icon">&#xe642;</i><span>添加内容</span>
@@ -25,9 +25,10 @@
     <script type="text/html" id="barNew">
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-event="copy">复制链接</a>
+        <a class="layui-btn layui-btn-xs" lay-event="copy" data-clipboard-action="copy" data-clipboard-target="#foo">复制链接</a>
 	</script>
     <script src="{{asset('public/plugins/layui/layui.js')}}"></script>
+    <script src="{{asset('public/plugins/clipboard/clipboard.min.js')}}"></script>
     <script>
         layui.use(['table','upload','jquery'], function(){
             var table = layui.table,
@@ -82,12 +83,16 @@
                         }
                     });
                 }else if(obj.event === 'copy'){
-                    var link="{{url('about')}}/"+data.about_id;
+                    var link="{{url('about')}}/"+data.about_cate_id+"/"+data.about_id;
                     var oInput = $("input[name=copy_link]");
                     oInput.val(link);
-                    oInput.select(); // 选择对象
-                    document.execCommand("Copy"); // 执行浏览器复制命令
-                    layer.msg('复制成功!');
+                    var clipboard = new ClipboardJS('.layui-btn');
+                    clipboard.on('success', function(e) {
+                        layer.msg('复制成功!');
+                    });
+                    clipboard.on('error', function(e) {
+                        layer.msg('复制失败!浏览器不支持,请更换浏览器!');
+                    });
                 }
             });
 

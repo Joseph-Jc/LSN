@@ -28,14 +28,14 @@
 			<i class="layui-icon"></i>
 			<p>点击上传电子书(pdf格式)，或将文件拖拽到此处</p>
 		</div>
-		<p id="video_name"></p>
+		<p style="text-align:center;" id="ebook_name"></p>
 
 		<form class="layui-form" action="{{url('admin/uploadebook')}}" method="post">
 			{{csrf_field()}}
 			<div class="layui-input-block">
 				<input name="ebookName" lay-verify="book" autocomplete="off" class="layui-input" type="hidden">
 				<input name="thumName" autocomplete="off" class="layui-input" type="hidden">
-				<input name="ebook_name" lay-verify="required|title" autocomplete="off" placeholder="请输入书名" class="layui-input" type="text">
+				<input id="input_name" name="ebook_name" lay-verify="required|title" autocomplete="off" placeholder="请输入书名" class="layui-input" type="text">
 			</div>
 			<div class="layui-upload">
 				<button type="button" class="layui-btn" id="upload_thum">点击上传封面</button>
@@ -152,7 +152,7 @@
 	    ,done: function(res){
 			if(res.code == 0){
 				$('input[name=ebookName]').val(res.ebookName);
-				$('#video_name').html(res.clientName);
+				$('#ebook_name').html(res.clientName);
 	  		}
 			layer.closeAll('loading'); //关闭loading
 	    }

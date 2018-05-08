@@ -10,7 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('nopage', function () {
+    return view('errors/nopage');
+});
 Route::any('adminer','Admin\LoginController@login');    //后台登录
 
 Route::group(['middleware'=>'adminlogin','prefix'=>'admin','namespace'=>'Admin'], function(){
@@ -101,7 +103,8 @@ Route::group(['namespace'=>'Home'], function(){
     Route::get('leave','HomeController@leave');
     Route::post('leave/upload_leave','HomeController@upload_leave');
     Route::any('leave/leave_list','HomeController@leave_list');
-    Route::any('about/{about_id}','HomeController@about');
+    Route::any('about/{about_cate_id}/{about_id}','HomeController@about');
+    Route::get('aboutdefault/{about_cate_id}','HomeController@aboutdefault');
     Route::any('new_list','HomeController@new_list');
     Route::any('news/{nes_id}','HomeController@news');
 });

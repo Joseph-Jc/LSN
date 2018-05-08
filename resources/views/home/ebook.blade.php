@@ -28,7 +28,7 @@
 			<li>
 				<a href="{{url('ebook')}}/{{$value->ebook_id}}">
 					<img class="{{Request::getPathInfo()=='/ebook/'.$value->ebook_id?'active':'unactive'}}" @if($value->ebook_thum!="uploads/ebook/")src="{{url('')}}/{{$value->ebook_thum}}"@endif>
-					<p style="text-align:center">{{$value->ebook_name}}</p>
+					<p style="text-align:center;margin-top:10px;">{{$value->ebook_name}}</p>
 				</a>
 			</li>
 			@endforeach

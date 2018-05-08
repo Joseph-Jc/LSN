@@ -33,8 +33,8 @@
 			  	<li class="layui-nav-item {{strpos(Request::getPathInfo(),'about')?'layui-this':''}}">
 		    		<a href="javascript:;">课程相关</a>
 				    <dl class="layui-nav-child">
-						@foreach($nav_id['about'] as $about_id => $about_title)
-							<dd class="{{Request::getPathInfo()=='/about/'.$about_id?'layui-this':''}}"><a href="{{url('about')}}/{{$about_id}}">{{$about_title}}</a></dd>
+						@foreach($nav_id['aboutcate'] as $about_cate_id => $about_cate_name)
+							<dd class="{{strpos(Request::getPathInfo(),'about/'.$about_cate_id)?'layui-this':''}}"><a href="{{url('aboutdefault')}}/{{$about_cate_id}}">{{$about_cate_name}}</a></dd>
 						@endforeach
 				    </dl>
 		  		</li>

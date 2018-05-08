@@ -99,8 +99,8 @@
 
         <div class="layui-footer">
             <!-- 底部固定区域 -->
-            2017 &copy;
-            <a href="http://kit.zhengjinfan.cn/">kit.zhengjinfan.cn/</a> MIT license
+            2018 &copy;
+            <a href="">hellojiang.xyz</a> MIT license
         </div>
     </div>
 

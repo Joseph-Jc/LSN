@@ -10,14 +10,16 @@ use App\Http\Model\Admin\Leave;
 
 class LeaveController extends Controller
 {
+    //分配页面
     public function leavelist(){
         return view('admin.leavelist');
     }
 
+    //待审核留言
     public function leavelist_check(Request $request){
         $res=$request->input();
         $leavelist_check=Leave::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->where('leave_check',0)->orderBy('leave_id', 'desc')->get();
-        $count=Leave::count();
+        $count=Leave::where('leave_check',0)->count();
         return response()->json([
             'code' => 0,
             'msg' => '',
@@ -25,10 +27,12 @@ class LeaveController extends Controller
             'data'=>$leavelist_check
         ]);
     }
+
+    //已审核留言
     public function leave_list(Request $request){
         $res=$request->input();
         $leavelist=Leave::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->where('leave_check',1)->orderBy('leave_id', 'desc')->get();
-        $count=Leave::count();
+        $count=Leave::where('leave_check',1)->count();
         return response()->json([
             'code' => 0,
             'msg' => '',
@@ -37,6 +41,7 @@ class LeaveController extends Controller
         ]);
     }
 
+    //删除留言
     public function leave_del(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -56,6 +61,7 @@ class LeaveController extends Controller
         }
     }
 
+    //审核留言
     public function leave_check(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
@@ -75,6 +81,7 @@ class LeaveController extends Controller
         }
     }
 
+    //批量审核
     public function check_many(Request $request){
         if($request->isMethod('post')){
             $res=$request->input('leave_id');
@@ -94,6 +101,7 @@ class LeaveController extends Controller
         }
     }
 
+    //批量删除
     public function del_many(Request $request){
         if($request->isMethod('post')){
             $res=$request->input('leave_id');
@@ -132,6 +140,7 @@ class LeaveController extends Controller
         }
     }
 
+    //批量删除已审核
     public function del_many_checked(Request $request){
         if($request->isMethod('post')){
             $res=$request->input('leave_id');

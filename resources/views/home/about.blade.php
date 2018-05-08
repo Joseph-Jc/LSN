@@ -28,11 +28,15 @@
 	<div class="content_r">
 		<div class="top_title">
 			<div class="square "></div>
-			<h1>课程相关<span> ABOUT</span></h1>
+			<h1>{{$aboutcatename}}<span> ABOUT</span></h1>
 		</div>
 		<ul>
-			@foreach($nav_id['about'] as $about_id => $about_title)
-				<li><a href="{{url('about')}}/{{$about_id}}"><button class="layui-btn {{Request::getPathInfo()=='/about/'.$about_id?'active':'unactive'}}">{{$about_title}}</button></a></li>
+			@foreach($aboutlist as $key => $value)
+				<li>
+					<a href="{{url('about')}}/{{$value->about_cate_id}}/{{$value->about_id}}">
+						<button class="layui-btn {{Request::getPathInfo()=='/about/'.$value->about_cate_id.'/'.$value->about_id?'active':'unactive'}}">{{$value->about_title}}</button>
+					</a>
+				</li>
 			@endforeach
 		</ul>
 	</div>

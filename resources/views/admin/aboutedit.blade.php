@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="{{asset('public/plugins/layui/css/layui.css')}}" media="all">
     <link rel="stylesheet" href="{{asset('public/admin/build/css/aboutedit.css')}}" media="all">
 </head>
+<style>
+    .layui-form-select dl{
+        max-height: 220px;
+    }
+</style>
 <body>
     <div class="site-text site-block">
         <form class="layui-form">
             <input type="hidden" name="about_time" value="<?php echo date('Y-m-d H:i:s');?>">
             <input type="hidden" name="about_id" value="@if(isset($data)){{$data->about_id}}@endif">
+            <div class="layui-form-item" style="width:20%;margin-left:110px;">
+                <select name="about_cate_id" lay-verify="cate" class="about_cate_id">
+                    <option value="">请选择分类</option>
+                    @foreach($aboutcate as $key=>$value)
+                        <option value="{{$value->about_cate_id}}" @if(isset($data)){{$value->about_cate_id==$data->about_cate_id?'selected':''}}@endif>{{$value->about_cate_name}}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">标题</label>
+                <label class="layui-form-label">导航标题</label>
                     <div class="layui-input-block">
                     <input style="width:70%" type="text" name="about_title" lay-verify="required|title" placeholder="请输入标题" autocomplete="off" class="layui-input" value="@if(isset($data)){{$data->about_title}}@endif">
                 </div>
@@ -92,8 +105,8 @@
 
         form.verify({
   		  title: function(value, item){ //value：表单的值、item：表单的DOM对象
-  			  if(value.length>50){
-  				  return '标题不能大于50个字!';
+  			  if(value.length>10){
+  				  return '标题不能大于10个字!';
   			  }
   		  }
 
@@ -108,6 +121,12 @@
   				  return '概述不能大于256个字!';
   			  }
   		  }
+
+          ,cate: function(value, item){ //value：表单的值、item：表单的DOM对象
+                if(value==""){
+                    return '请选择分类!';
+                }
+  		   }
   	  });
     });
     </script>

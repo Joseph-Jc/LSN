@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\About;
+use App\Http\Model\Admin\Aboutcate;
 
 class AboutController extends Controller
 {
+    //分配页面
     public function aboutlist(){
         return view('admin.aboutlist');
     }
 
+    //列表
     public function about_list(Request $request){
         $res=$request->input();
         $about=About::offset(($res['page']-1)*$res['limit'])->limit($res['limit'])->orderBy('about_id', 'desc')->get();
@@ -26,10 +29,12 @@ class AboutController extends Controller
         ]);
     }
 
+    //编辑文章
     public function aboutedit(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();
             $data=[
+                'about_cate_id'=>$res['data']['about_cate_id'],
                 'about_title'=>$res['data']['about_title'],
                 'about_author'=>$res['data']['about_author'],
                 'about_time'=>$res['data']['about_time'],
@@ -67,15 +72,19 @@ class AboutController extends Controller
                 return $data;
             }
         }
-        return view('admin.aboutedit');
+        $aboutcate=Aboutcate::get()->all();     //获取分类
+        return view('admin.aboutedit',compact('aboutcate'));
     }
 
+    //给编辑页面分配数据
     public function about_edit(Request $request,$about_id){
         $res=$request->input();
         $data=About::find($about_id);
-        return view('admin.aboutedit',compact('data'));
+        $aboutcate=Aboutcate::get()->all();     //获取分类
+        return view('admin.aboutedit',compact('data','aboutcate'));
     }
 
+    //删除
     public function about_del(Request $request){
         if($request->isMethod('post')){
             $res=$request->input();

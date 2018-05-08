@@ -18,7 +18,7 @@ body{
 	width: 100%;
 	background: #393D49;
 	position: fixed;
-	z-index: 999;
+	z-index: 99999;
 	top: 0;
 	left: 0;
 }

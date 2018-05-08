@@ -46,6 +46,11 @@
 	width: 90%;
 	margin: 15px auto;
 	margin-bottom: 30px;
+	margin-top: 40px;
+}
+
+.article_content span,p,h1,h2,h3,h4{
+	line-height: 30px;
 }
 
 .top_title{
